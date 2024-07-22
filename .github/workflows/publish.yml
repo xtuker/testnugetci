@@ -38,10 +38,10 @@ jobs:
 
     - name: Extract version from tag
       id: extract_version
-      run: echo "##[set-output name=VERSION;]${GITHUB_REF#refs/tags/v}"
+      run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> "$GITHUB_ENV"
 
     # Create the NuGet package in the folder from the environment variable NuGetDirectory
-    - run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }} -p:Version=$VERSION -p:ContinuousIntegrationBuild=true -p:EmbedUntrackedSources=true
+    - run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }} -p:ContinuousIntegrationBuild=true -p:EmbedUntrackedSources=true
 
     # Publish the NuGet package as an artifact, so they can be used in the following jobs
     - uses: actions/upload-artifact@v4
