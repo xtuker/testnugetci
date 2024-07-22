@@ -8,20 +8,23 @@
 
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 
-        <Version>0.0.1-preview.2</Version>
+        <Version>0.0.1-preview.3</Version>
 
         <AnalysisLevel>latest</AnalysisLevel>
         <Authors>Alexander Falkovsky</Authors>
         <Company>Xtuker</Company>
 <!--        <PackageProjectUrl>https://github.com/xtuker/xtuker.configurationstorage</PackageProjectUrl>-->
         <RepositoryUrl>https://github.com/xtuker/testnugetci</RepositoryUrl>
-        <RepositoryType>git</RepositoryType>
-        <RepositoryBranch>master</RepositoryBranch>
         <Copyright>Copyright $([System.DateTime]::Today.ToString(yyyy)) © Alexander Falkovsky</Copyright>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <DebugType>embedded</DebugType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     </PropertyGroup>
 
     <ItemGroup>
@@ -32,7 +35,6 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.SourceLink.GitHub">
             <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
 
