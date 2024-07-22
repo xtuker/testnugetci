@@ -8,45 +8,40 @@
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
         <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-        <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageReadmeFile>README.md</PackageReadmeFile>
 
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 
-        <Version>0.0.1-preview.5</Version>
+        <Version>0.0.1-preview.6</Version>
 
         <AnalysisLevel>latest</AnalysisLevel>
         <Authors>Alexander Falkovsky</Authors>
         <Company>Xtuker</Company>
         <RepositoryUrl>https://github.com/xtuker/testnugetci</RepositoryUrl>
         <Copyright>Copyright $([System.DateTime]::Today.ToString(yyyy)) © Alexander Falkovsky</Copyright>
-
-        <IsPackable>True</IsPackable>
-        <DebugSymbols>True</DebugSymbols>
-        <EmbedUntrackedSources>true</EmbedUntrackedSources>
     </PropertyGroup>
 
     <ItemGroup>
         <None Include="../../README.md" Pack="true" PackagePath="/" />
-        <None Include="../../LICENSE" Pack="true" PackagePath="/"/>
     </ItemGroup>
 
     <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
         <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-        <DebugType>embedded</DebugType>
+        <Deterministic>true</Deterministic>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.SourceLink.GitHub">
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <EmbeddedFiles Include="$(GeneratedAssemblyInfoFile)" />
     </ItemGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
         <DocumentationFile>bin\Release\Xtuker.TestNugetCI.xml</DocumentationFile>
-        <DebugType>embedded</DebugType>
-        <Optimize>true</Optimize>
-        <DefineConstants>TRACE;$(DefineConstants)</DefineConstants>
     </PropertyGroup>
 </Project>
