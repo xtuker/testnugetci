@@ -1,6 +1,4 @@
 <Project>
-    <Target Name="temp" BeforeTargets="BeforeCompile" AfterTargets="GenerateAssemblyInfo"></Target>
-
     <PropertyGroup>
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
@@ -23,6 +21,7 @@
     </ItemGroup>
 
     <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+        <TargetFrameworkMonikerAssemblyAttributesPath>$([System.IO.Path]::Combine('$(IntermediateOutputPath)','$(TargetFrameworkMoniker).AssemblyAttributes$(DefaultLanguageSourceExtension)'))</TargetFrameworkMonikerAssemblyAttributesPath>
         <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
         <Deterministic>true</Deterministic>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
@@ -36,6 +35,8 @@
         <PackageReference Include="Microsoft.SourceLink.GitHub">
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
+        <EmbeddedFiles Include="$(GeneratedAssemblyInfoFile)"/>
+        <EmbeddedFiles Include="$(TargetFrameworkMonikerAssemblyAttributesPath)"/>
     </ItemGroup>
 
 </Project>
