@@ -1,14 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xtuker.TestNugetCI", "Xtuker.TestNugetCI\Xtuker.TestNugetCI.csproj", "{D49762EE-91E3-456A-9817-63C8BED090AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xtuker.TestNugetCI", "src\Xtuker.TestNugetCI\Xtuker.TestNugetCI.csproj", "{D49762EE-91E3-456A-9817-63C8BED090AC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".shared", ".shared", "{116D1492-3196-4751-B610-89DC59C2ED21}"
 	ProjectSection(SolutionItems) = preProject
-		Directory.Build.props = Directory.Build.props
-		Directory.Packages.props = Directory.Packages.props
+		Directory.Build.props = src\Directory.Build.props
+		Directory.Packages.props = src\Directory.Packages.props
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "tests\UnitTests\UnitTests.csproj", "{27298BB4-CE46-4AA7-87FC-84AB6781BDC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,5 +22,9 @@ Global
 		{D49762EE-91E3-456A-9817-63C8BED090AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D49762EE-91E3-456A-9817-63C8BED090AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D49762EE-91E3-456A-9817-63C8BED090AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27298BB4-CE46-4AA7-87FC-84AB6781BDC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27298BB4-CE46-4AA7-87FC-84AB6781BDC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27298BB4-CE46-4AA7-87FC-84AB6781BDC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27298BB4-CE46-4AA7-87FC-84AB6781BDC9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
