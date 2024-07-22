@@ -13,16 +13,16 @@
 
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 
-        <Version>0.0.1-preview.4</Version>
+        <Version>0.0.1-preview.5</Version>
 
         <AnalysisLevel>latest</AnalysisLevel>
         <Authors>Alexander Falkovsky</Authors>
         <Company>Xtuker</Company>
         <RepositoryUrl>https://github.com/xtuker/testnugetci</RepositoryUrl>
         <Copyright>Copyright $([System.DateTime]::Today.ToString(yyyy)) © Alexander Falkovsky</Copyright>
-        <IncludeSymbols>false</IncludeSymbols>
-        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+
+        <IsPackable>True</IsPackable>
+        <DebugSymbols>True</DebugSymbols>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
     </PropertyGroup>
 
@@ -33,6 +33,7 @@
 
     <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
         <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+        <DebugType>embedded</DebugType>
     </PropertyGroup>
 
     <ItemGroup>
@@ -44,5 +45,8 @@
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
         <DocumentationFile>bin\Release\Xtuker.TestNugetCI.xml</DocumentationFile>
+        <DebugType>embedded</DebugType>
+        <Optimize>true</Optimize>
+        <DefineConstants>TRACE;$(DefineConstants)</DefineConstants>
     </PropertyGroup>
 </Project>
